@@ -12,7 +12,7 @@ public class DroneApplication {
 	 */
 	public static void main(String[] args) {
 		SpringApplication.run(DroneApplication.class, args);
-		System.out.print("Application is running on port: 8080");
+		System.out.print("Application is running on port: 8082");
 	}
 
 }
