@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class LoadDroneDto {
-    private Integer drone_id;
+    private Integer droneId;
     private String weight;
     private String code;
     private String image;

@@ -1,5 +1,6 @@
-package com.drone.drone.model;
+package com.drone.drone.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,14 @@ import javax.persistence.*;
 @Table(name="DRONE_LOADED")
 @AllArgsConstructor
 @NoArgsConstructor
-public class LoadDroneModel {
+public class DroneLoadedModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer  id;
-    @Column(name="DRONE_ID")
-    private Integer drone_id;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "DRONE_ID", referencedColumnName = "ID")
+    @JsonIgnore
+    private DroneModel drone;
     @Column(name="NAME")
     private String name;
     @Column(name="WEIGHT")
@@ -25,4 +28,5 @@ public class LoadDroneModel {
     private String code;
     @Column(name="IMAGE")
     private String image;
+
 }
