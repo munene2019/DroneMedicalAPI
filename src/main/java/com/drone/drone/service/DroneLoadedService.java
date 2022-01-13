@@ -23,14 +23,12 @@ public class DroneLoadedService {
         CustomResponse response = new CustomResponse();
         DroneModel droneModel = droneRepository.findById(loadDroneDto.getDroneId()).orElse(null);
         if (droneModel != null) {
-            System.out.println("DATA OBJECT DRONEID" + loadDroneDto.getDroneId());
             droneLoadedModel.setName(loadDroneDto.getName());
             droneLoadedModel.setDrone(new DroneModel(loadDroneDto.getDroneId()));
             droneLoadedModel.setCode(loadDroneDto.getCode());
             droneLoadedModel.setImage(loadDroneDto.getImage());
             droneLoadedModel.setWeight(loadDroneDto.getWeight());
             response.setMessage("Drone Loaded successfully");
-            System.out.println("DATA OBJECT here " + droneLoadedModel);
             droneLoadedRepository.save(droneLoadedModel);
             droneRepository.updateDroneStatus(loadDroneDto.getDroneId());
         } else {
