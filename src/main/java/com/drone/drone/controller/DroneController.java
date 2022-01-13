@@ -28,7 +28,6 @@ public class DroneController {
     }
     @GetMapping(path="/availableDrones")
     public List<DroneModel> getDronesAvailable(){
-        System.out.println("Test");
         return droneService.getAvailableDrones();
 
     }

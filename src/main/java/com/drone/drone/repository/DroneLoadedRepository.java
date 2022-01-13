@@ -10,6 +10,5 @@ import java.util.List;
 public interface DroneLoadedRepository extends JpaRepository<DroneLoadedModel,Integer> {
    @Query("FROM  DroneLoadedModel where drone_id=:id")
     List<DroneLoadedModel> findDroneMed(Integer id);
-//   DroneLoadedModel findByByCode(String code);
 
 }
