@@ -1,10 +1,13 @@
 package com.drone.drone.controller;
 
+import com.drone.drone.Entity.DroneLoadedModel;
 import com.drone.drone.controller.Utilities.CustomResponse;
 import com.drone.drone.dto.LoadDroneDto;
 import com.drone.drone.service.DroneLoadedService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/loadDrone")
@@ -19,8 +22,8 @@ public class LoadDroneController {
         return droneLoadedService.loadDrone(loadDroneDto);
 
     }
-//        @GetMapping(path="/list/{id}")
-//    public List<MedicineModel> getDrone(@PathVariable("id") Integer id){
-//        return loadDroneService.getAllDroneMedication(id);
-//    }
+        @GetMapping(path="/DroneMedicalItems/{id}")
+    public List<DroneLoadedModel> getDroneMedicalItems(@PathVariable("id") Integer id){
+        return droneLoadedService.getAllDroneMedication(id);
+    }
 }

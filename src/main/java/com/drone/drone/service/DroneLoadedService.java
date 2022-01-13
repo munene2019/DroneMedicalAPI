@@ -9,45 +9,43 @@ import com.drone.drone.repository.DroneLoadedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DroneLoadedService {
     @Autowired
     DroneLoadedRepository droneLoadedRepository;
     @Autowired
     DroneRepository droneRepository;
-    public CustomResponse loadDrone(LoadDroneDto loadDroneDto){
-        DroneLoadedModel droneLoadedModel=new DroneLoadedModel();
-        CustomResponse response=new CustomResponse();
 
-        System.out.println("DATA OBJECT DRONEID"+loadDroneDto.getDroneId());
-        droneLoadedModel.setName(loadDroneDto.getName());
-        droneLoadedModel.setDrone(new DroneModel(loadDroneDto.getDroneId()));
-        droneLoadedModel.setCode(loadDroneDto.getCode());
-        droneLoadedModel.setImage(loadDroneDto.getImage());
-        droneLoadedModel.setWeight(loadDroneDto.getWeight());
-        response.setMessage("Drone Loaded successfully");
-        System.out.println("DATA OBJECT here "+droneLoadedModel);
-        droneLoadedRepository.save(droneLoadedModel);
-       droneRepository.updateDroneStatus(loadDroneDto.getDroneId());
+    public CustomResponse loadDrone(LoadDroneDto loadDroneDto) {
+        DroneLoadedModel droneLoadedModel = new DroneLoadedModel();
+        CustomResponse response = new CustomResponse();
+        DroneModel droneModel = droneRepository.findById(loadDroneDto.getDroneId()).orElse(null);
+        if (droneModel != null) {
+            System.out.println("DATA OBJECT DRONEID" + loadDroneDto.getDroneId());
+            droneLoadedModel.setName(loadDroneDto.getName());
+            droneLoadedModel.setDrone(new DroneModel(loadDroneDto.getDroneId()));
+            droneLoadedModel.setCode(loadDroneDto.getCode());
+            droneLoadedModel.setImage(loadDroneDto.getImage());
+            droneLoadedModel.setWeight(loadDroneDto.getWeight());
+            response.setMessage("Drone Loaded successfully");
+            System.out.println("DATA OBJECT here " + droneLoadedModel);
+            droneLoadedRepository.save(droneLoadedModel);
+            droneRepository.updateDroneStatus(loadDroneDto.getDroneId());
+        } else {
+            response.setMessage(" Drone Does not Already exist");
+        }
 
-//      if(droneLoadedModel ==null) {
-//          medicineModel.setName(loadDroneDto.getName());
-//          medicineModel.setCode(loadDroneDto.getCode());
-//          medicineModel.setImage(loadDroneDto.getImage());
-//          medicineModel.setWeight(loadDroneDto.getWeight());
-//          response.setMessage("Drone Loaded successfully");
-//          medicineRepository.save(medicineModel);
-//      }else{
-//          response.setMessage(" Drone Already exist");
-//      }
         return response;
 
     }
-//    public List<MedicineModel> getAllDroneMedication(Integer id){
-//
-//        List<MedicineModel>droneMedication= loadDroneRepository.findDroneMed(id);
-//        System.out.println("Drones"+droneMedication);
-//        return droneMedication;
-//
-//    }
+    public List<DroneLoadedModel> getAllDroneMedication(Integer id){
+        DroneModel droneModel = droneRepository.findById(id).orElse(null);
+        if(droneModel !=null){}
+        List<DroneLoadedModel> droneMedication= droneLoadedRepository.findDroneMed(id);
+        System.out.println("Drones"+droneMedication);
+        return droneMedication;
+
+    }
 }
