@@ -14,6 +14,7 @@ import javax.persistence.*;
 public class LoadDroneModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    Integer  id;
     @Column(name="DRONE_ID")
     private Integer drone_id;
     @Column(name="NAME")
