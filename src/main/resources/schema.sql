@@ -5,8 +5,7 @@
  model VARCHAR(50) NOT NULL,
  weight_limit VARCHAR(20) NOT NULL,
  battery_capacity VARCHAR(10) NOT NULL,
- state VARCHAR(15) NOT NULL,
- status VARCHAR(15) NOT NULL
+ state VARCHAR(100) NOT NULL
  );
 
  DROP TABLE IF EXISTS DRONE_LOADED;

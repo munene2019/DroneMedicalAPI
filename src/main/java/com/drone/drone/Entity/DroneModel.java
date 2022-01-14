@@ -26,8 +26,6 @@ public class DroneModel {
     private String batteryCapacity;
     @Column(name="STATE")
     private String state;
-    @Column(name="STATUS")
-    private String status;
     public DroneModel(Integer id) {
         this.id = id;
     }

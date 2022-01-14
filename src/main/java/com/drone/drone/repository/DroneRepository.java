@@ -16,10 +16,10 @@ public interface DroneRepository extends JpaRepository<DroneModel,Integer> {
 
     DroneModel findBySerial(Integer serial);
     @Transactional
-    @Query("UPDATE DroneModel c set c.status = 1 WHERE id =:id")
+    @Query("UPDATE DroneModel set state ='LOADED' WHERE id =:id")
     @Modifying
     void updateDroneStatus(Integer id);
-    @Query("FROM  DroneModel where status=0")
+    @Query("FROM  DroneModel where state='IDLE'")
     List<DroneModel> findAvailableDrones();
 
 }

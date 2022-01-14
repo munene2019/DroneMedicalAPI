@@ -1,11 +1,9 @@
 package com.drone.drone.service;
 
-import com.drone.drone.Entity.DroneLoadedModel;
 import com.drone.drone.controller.Utilities.CustomResponse;
 import com.drone.drone.controller.Utilities.Response;
 import com.drone.drone.dto.DroneDto;
 import com.drone.drone.Entity.DroneModel;
-import com.drone.drone.dto.LoadMedicine;
 import com.drone.drone.repository.DroneRepository;
 import com.drone.drone.repository.DroneLoadedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +26,6 @@ public class DroneService {
         drone.setSerial(droneDto.getSerial());
         drone.setWeightLimit(droneDto.getWeightLimit());
         drone.setState(droneDto.getState());
-        drone.setStatus("0");
         drone.setBatteryCapacity(droneDto.getBatteryCapacity());
        DroneModel droneModel= droneRepository.findBySerial(droneDto.getSerial());
        if(droneModel==null){
