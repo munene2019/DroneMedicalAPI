@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "c118f4c5-dabb-4a07-a2f9-f4e1feebf4a8",
+		"name": "DRONE APP",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LoadDrone",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"droneId\":\"1\",\r\n\"name\":\"panadol\",\r\n\"weight\":\"20\",\r\n\"code\":\"2022\",\r\n\"image\":\"munenerogers@gmail.com\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/loadDrone/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"loadDrone",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drones Battery Lev",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"service\":\"events\",\r\n\"id\":\"1\",\r\n\"pin\":\"12345\",\r\n\"uuid\":\"12244\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/loadDrone/list/id",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"loadDrone",
+						"list",
+						"id"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Available Drones",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"service\":\"events\",\r\n\"id\":\"1\",\r\n\"pin\":\"12345\",\r\n\"uuid\":\"12244\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/drone/availableDrones",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"drone",
+						"availableDrones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Drone Medical items",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"service\":\"events\",\r\n\"id\":\"1\",\r\n\"pin\":\"12345\",\r\n\"uuid\":\"12244\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082/loadDrone/DroneMedicalItems/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082",
+					"path": [
+						"loadDrone",
+						"DroneMedicalItems",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Drone",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{jenga_token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serial\": \"1233232\",\r\n    \"model\": \"KCA\",\r\n    \"weightLimit\": \"12\",\r\n    \"batteryCapacity\": \"10\",\r\n    \"state\": \"31750682\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8082",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8082"
+				}
+			},
+			"response": []
+		}
+	]
+}
